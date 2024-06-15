@@ -1,9 +1,18 @@
 import sys
-sys.path.append('/Users/ndungajr/PycharmProjects/hw05')
 from data.input_data import DatasetCreator
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
+from pathlib import Path
+
+# Get the absolute path of the current file
+current_file_path = Path('best_model_eval.py').resolve()
+
+# Get the directory of the current file
+project_dir = current_file_path.parent
+
+# Add the project directory to sys.path
+sys.path.insert(0, str(project_dir))
 
 # Step 1: Create Datasets
 dataset_creator = DatasetCreator()
