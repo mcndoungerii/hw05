@@ -114,3 +114,44 @@ print(blob_test_predictions)
 
 print("\nCircles Dataset Test Predictions:")
 print(circles_test_predictions)
+
+from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, roc_curve, roc_auc_score
+import matplotlib.pyplot as plt
+
+# Function to evaluate and print detailed metrics
+def print_evaluation_metrics(model, X_test, y_test, dataset_name):
+    y_pred = model.predict(X_test)
+    y_prob = model.predict_proba(X_test)[:, 1]
+
+    accuracy = accuracy_score(y_test, y_pred)
+    cm = confusion_matrix(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+    auc = roc_auc_score(y_test, y_prob)
+
+    print(f"\n{dataset_name} Dataset Evaluation:")
+    print(f"Accuracy: {accuracy}")
+    print(f"Confusion Matrix:\n{cm}")
+    print(f"Precision: {precision}")
+    print(f"Recall: {recall}")
+    print(f"F1 Score: {f1}")
+    print(f"AUC: {auc}")
+
+    # Plot ROC Curve
+    plt.figure()
+    plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % auc)
+    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title(f'Receiver Operating Characteristic - {dataset_name}')
+    plt.legend(loc="lower right")
+    plt.show()
+
+# Evaluate models on both test datasets
+# print_evaluation_metrics(best_model_blob, X_blob_test_scaled, y_blob_test, "Blob")
+print_evaluation_metrics(best_model_circles, X_circles_test_scaled, y_circles_test, "Circles")
+
