@@ -8,20 +8,20 @@ This project contains the analysis of the several models, adjustment of the hype
 
 ├── README.md
 ├── data
-│   └── dataset_Malicious_and_Benign_Websites.csv
+│ ├── __init__.py
+│ └── input_data.py      
 ├── main.py
 ├── models
-│   ├── malicious_benign_classification.py
-│   ├── malicious_benign_grid.py
-│   ├── random_classification.py
-│   └── random_classification_grid.py
+│ ├── __init__.py
+│ ├── best_model_eval.py
+│ ├── ensemble_model_random_forest.py
+│ └── nn_model.py
 ├── notebooks
-│   ├── best_model_conclusion.ipynb
-│   ├── eva_on_quality_metrics.ipynb
-│   ├── eval_trainings.ipynb
-│   └── volume_evaluations.ipynb
-├── requirements.txt
-└── utility.py
+│ ├── decision_boundary.ipynb
+│ ├── ensemble_model.ipynb
+│ ├── nn_model_voting.ipynb
+│ └── shift_variation.ipynb
+└── requirements.txt
 
 
 
