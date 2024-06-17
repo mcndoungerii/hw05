@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 
 # Get the absolute path of the current file
-current_file_path = Path('ensemble_model.py').resolve()
+current_file_path = Path('ensemble_model_random_forest.py').resolve()
 
 # Get the directory of the current file
 project_dir = current_file_path.parent

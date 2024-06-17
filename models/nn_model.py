@@ -152,6 +152,6 @@ def print_evaluation_metrics(model, X_test, y_test, dataset_name):
     plt.show()
 
 # Evaluate models on both test datasets
-# print_evaluation_metrics(best_model_blob, X_blob_test_scaled, y_blob_test, "Blob")
+print_evaluation_metrics(best_model_blob, X_blob_test_scaled, y_blob_test, "Blob")
 print_evaluation_metrics(best_model_circles, X_circles_test_scaled, y_circles_test, "Circles")
 
